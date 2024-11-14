@@ -46,7 +46,6 @@ public class UserServices {
         }
         return false;
     }
-
     public void deleteUser(int id) {
         int idUser = AuthenticationServices.getLoggedInUser().getUserId();
         try {
