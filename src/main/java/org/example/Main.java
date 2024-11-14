@@ -2,9 +2,11 @@ package org.example;
 
 import org.example.entity.User;
 import org.example.entity.Wallet;
+import org.example.exeption.WalletException;
 import org.example.repository.TransactionRepository;
 import org.example.repository.UserRepository;
 import org.example.repository.WalletRepository;
+import org.example.services.AuthenticationServices;
 import org.example.services.UserServices;
 import org.example.services.WalletServices;
 
@@ -13,43 +15,31 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-//        WalletRepository walletRepository = new WalletRepository();
-//        TransactionRepository transactionRepository = new TransactionRepository();
+        WalletRepository walletRepository = new WalletRepository();
+        TransactionRepository transactionRepository = new TransactionRepository();
         UserServices userServices = new UserServices();
         WalletServices walletServices = new WalletServices();
-        userServices.userSignUp("amir","123");
-        //userServices.userSignUp("sattar","345");
-        //userServices.userLogin("sattar","123");
 
+//
+//        try {
+//            userServices.userSignUp("amir", "123");
+//            userServices.userSignUp("sattar", "345");
+//            userServices.userSignUp("amir", "123");
+//        } catch (WalletException e) {
+//
+//            e.getMessage();
+//            e.printStackTrace();
+//        }
 
+        try {
+            userServices.userLogin("sattar", "345");
+            userServices.deleteUser(1);
+        } catch (SQLException e) {
+            System.out.println("**"+ e.getMessage());
+            e.printStackTrace();
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- //      Wallet wallet1 = new Wallet(0,"999",5.91);
+        //      Wallet wallet1 = new Wallet(0,"999",5.91);
 //       Wallet wallet2 = new Wallet ();
 //       wallet2.setWalletAddress("1000");
 //       wallet2.setBalance(9.66);*/
@@ -65,24 +55,6 @@ public class Main {
 //         user1.setUsername("sattar");
 //         user1.setPassword("123");
 //         userRepository.save(user1);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

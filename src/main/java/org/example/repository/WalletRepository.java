@@ -10,8 +10,8 @@ public class WalletRepository {
     private static final String CREATE_TABLE_WALLET = """
             CREATE TABLE IF NOT EXISTS WALLET(
             wallet_id SERIAL PRIMARY KEY,
-            address varchar(50) UNIQUE NOT NULL,
-            balance DOUBLE PRECISION DEFAULT);
+            address varchar(50) UNIQUE ,
+            balance DOUBLE PRECISION DEFAULT 0);
             """;
 
     public WalletRepository() throws SQLException {
@@ -51,7 +51,6 @@ public class WalletRepository {
         var statement = Datasource.getConnection().prepareStatement(INSERT_SQL);
         statement.setString(1, wallet.getWalletAddress());
         statement.setDouble(2, wallet.getBalance());
-
         statement.execute();
         statement.close();
         return wallet;

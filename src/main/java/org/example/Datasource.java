@@ -12,10 +12,10 @@ public class Datasource {
     }
 
     static {
-        var jdbc = "jdbc:postgresql://localhost:5432/";
+        var jdbc = "jdbc:postgresql://localhost:5432/wallet";
         try {
             connection = DriverManager.getConnection(jdbc,
-                    "postgres", "postgres");
+                    "postgres", "123456");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -36,7 +36,8 @@ public class UserRepository {
     private static final String DELETE_BY_ID = """
             DELETE FROM USERS
             WHERE user_id = ?
-            """;
+            and username=?
+              """;
 
     private static final String FIND_BY_ID = """
             SELECT * FROM USERS
@@ -98,7 +99,7 @@ public class UserRepository {
 
             User user = null;
             if (resultSet.next()) {
-                int user_int id = resultSet.getInt(1);
+                int user_id  = resultSet.getInt(1);
                 int wallet_id = resultSet.getInt(2);
                 String userName = resultSet.getString(3);
                 String password = resultSet.getString(4);
